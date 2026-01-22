@@ -31,9 +31,3 @@ Open: http://localhost:8080/ping
 ## Environment
 
 On install, `.env` is created automatically from `.env.dist` if it doesn't exist.
-
-Alternatively you can manually refresh `.env` using:
-
-```sh
-composer sapling:refresh
-```
