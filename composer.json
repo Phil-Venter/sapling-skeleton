@@ -1,0 +1,29 @@
+{
+    "name": "sapling/skeleton",
+    "description": "Sapling Skeleton: a minimal starter app powered by Sapling Core.",
+    "type": "project",
+    "license": "0BSD",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.4",
+        "sapling/core": "*"
+    },
+    "scripts": {
+        "sapling:env": [
+            "@php -r \"!file_exists('.env') && file_exists('.env.dist') && copy('.env.dist', '.env');\""
+        ],
+        "sapling:refresh": [
+            "@php -r \"file_exists('.env.dist') && copy('.env.dist', '.env');\""
+        ],
+        "sapling:serve": [
+            "php -S localhost:8080 -t public public/index.php"
+        ],
+        "post-install-cmd": [
+            "@sapling:env"
+        ],
+        "post-update-cmd": [
+            "@sapling:env"
+        ]
+    }
+}
