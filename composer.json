@@ -9,15 +9,18 @@
         "php": ">=8.4",
         "sapling/core": "*"
     },
+    "config": {
+        "process-timeout": 0
+    },
     "scripts": {
         "sapling:env": [
             "@php -r \"!file_exists('.env') && file_exists('.env.dist') && copy('.env.dist', '.env');\""
         ],
-        "sapling:refresh": [
-            "@php -r \"file_exists('.env.dist') && copy('.env.dist', '.env');\""
+        "sapling:lint": [
+            "find . -name \"*.php\" -not -path \"./vendor/*\" -print0 | xargs -0 -n1 php -l"
         ],
         "sapling:serve": [
-            "php -S localhost:8080 -t public public/index.php"
+            "php -d display_errors=1 -d error_reporting=E_ALL -S localhost:8080 -t public public/index.php"
         ],
         "post-install-cmd": [
             "@sapling:env"
