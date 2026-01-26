@@ -9,6 +9,11 @@
         "php": ">=8.4",
         "sapling/core": "*"
     },
+    "autoload": {
+        "functions": [
+            "src/functions.php"
+        ]
+    },
     "config": {
         "process-timeout": 0
     },
