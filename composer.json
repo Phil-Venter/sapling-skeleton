@@ -10,7 +10,7 @@
         "sapling/core": "*"
     },
     "autoload": {
-        "functions": [
+        "files": [
             "src/functions.php"
         ]
     },

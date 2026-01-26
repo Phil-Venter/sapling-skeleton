@@ -11,7 +11,7 @@ Install Composer (used to manage PHP packages): https://getcomposer.org/download
 Create a new project (replace `my-app` with your app name):
 
 ```sh
-composer create-project sapling/skeleton my-app
+composer create-project sapling/skeleton:dev-main my-app
 ````
 
 Enter the project directory:
