@@ -27,10 +27,7 @@
         "sapling:serve": [
             "php -d display_errors=1 -d error_reporting=E_ALL -S localhost:8080 -t public public/index.php"
         ],
-        "post-install-cmd": [
-            "@sapling:env"
-        ],
-        "post-update-cmd": [
+        "post-create-project-cmd": [
             "@sapling:env"
         ]
     }
