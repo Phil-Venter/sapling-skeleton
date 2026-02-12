@@ -26,6 +26,6 @@ function initialise(string $env): Sapling\Core\Router
         }
     });
 
-    Sapling\Core\Environment::load(base_dir() . $env);
+    Sapling\Core\Environment::load(from_base_dir($env));
     return Sapling\Core\Router::fromGlobals();
 }
