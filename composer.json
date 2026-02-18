@@ -16,9 +16,12 @@
         "sapling:lint": [
             "find . -name \"*.php\" -not -path \"./vendor/*\" -print0 | xargs -0 -n1 php -l"
         ],
+        "sapling:migrate": [
+            "php bin/migrate.php"
+        ],
         "sapling:serve": [
             "Composer\\Config::disableProcessTimeout",
-            "php bin/migrate.php",
+            "@sapling:migrate",
             "php -d display_errors=1 -d error_reporting=E_ALL -S localhost:8080 -t public public/index.php"
         ],
         "post-create-project-cmd": [
