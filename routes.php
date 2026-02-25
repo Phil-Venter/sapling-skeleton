@@ -4,16 +4,22 @@
 use Sapling\Core\Response;
 
 $router->get("ping", function () {
-    $count = (int) tap(pdo()->prepare(<<<'SQL'
+    $sql = <<<'SQL'
         INSERT INTO visits (ip, "count", date)
         VALUES (:ip, 1, :date)
         ON CONFLICT(ip, date) DO UPDATE SET
           "count" = "count" + 1
         RETURNING "count";
-    SQL))->execute([
-        "ip"   => $_SERVER["REMOTE_ADDR"] ?? "",
-        "date" => date("Y-m-d H:i:s"),
-    ])->fetchColumn();
+    SQL;
 
-    return Response::ok("pong ($count)", ["Content-Type" => "text/plain; charset=utf-8"]);
+    $data = [
+        "ip" => $_SERVER["REMOTE_ADDR"] ?? "",
+        "date" => date("Y-m-d H:i:s"),
+    ];
+
+    $count = (int) tap(pdo()->prepare($sql))
+        ->execute($data)
+        ->fetchColumn();
+
+    return Response::ok()->text("pong ($count)");
 });

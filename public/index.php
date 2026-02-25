@@ -9,5 +9,7 @@ require_once from_base_dir("bootstrap.php");
 $router = new Sapling\Core\Router(Sapling\Core\Request::fromGlobals());
 require_once from_base_dir("routes.php");
 if (!$router->matched) {
-    Sapling\Core\Response::notFound("Not found")->send();
+    Sapling\Core\Response::notFound()
+        ->render(file_get_contents(from_base_dir('views/404.html')))
+        ->send();
 }
