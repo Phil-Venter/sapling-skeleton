@@ -3,7 +3,7 @@
 A blank [Sapling](https://github.com/Phil-Venter/sapling-core) app.
 
 ```sh
-composer create-project sapling/skeleton my-app
+composer create-project sapling/skeleton:dev-main my-app
 cd my-app
 composer serve
 ```
