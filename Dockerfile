@@ -13,6 +13,11 @@ FROM dunglas/frankenphp:1-php8.4
 RUN install-php-extensions opcache \
 	&& cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+# Runs as a user without root, which may still bind port 80 and write the database and certificates in /data and /config.
+RUN useradd --system app \
+	&& setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
+	&& chown -R app:app /data /config
+
 WORKDIR /app
 COPY --from=vendor /app /app
 
@@ -21,3 +26,7 @@ COPY --from=vendor /app /app
 ENV APP_ENV=production \
 	DB_FILE=/data/app.db \
 	SERVER_NAME=:80
+
+HEALTHCHECK --interval=30s --timeout=5s CMD curl -fsS http://localhost/ping || exit 1
+
+USER app
