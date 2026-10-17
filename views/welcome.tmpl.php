@@ -36,7 +36,7 @@
 
             <article>
                 <header><strong>Add a page</strong></header>
-                <p>A page is one class in <code>app/</code>, with its route on the class. Save this as <code>app/Hello.php</code> and open <a href="/hello">/hello</a>:</p>
+                <p>A page is one class in <code>app/</code>, with its route on the class. Save this as <code>app/HelloAction.php</code> and open <a href="/hello">/hello</a>:</p>
                 <pre><code>&lt;?php
 
 namespace App;
@@ -45,7 +45,7 @@ use Sapling\Attributes\Route;
 use Sapling\Http\Response;
 
 #[Route('GET', '/hello')]
-final class Hello
+final class HelloAction
 {
     public function __invoke(): Response
     {

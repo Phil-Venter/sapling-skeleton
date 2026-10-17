@@ -2,9 +2,9 @@
 
 use Sapling\App;
 use Sapling\Config;
+use Sapling\Db;
 use Sapling\Http\Middleware\Csrf;
 use Sapling\Http\Middleware\SecurityHeaders;
-use Sapling\Http\Response;
 use Sapling\Template;
 
 $config = Config::load(
@@ -13,6 +13,7 @@ $config = Config::load(
 );
 
 $app = App::boot(__DIR__, $config);
+$app->container->set(Db::class, fn() => Db::sqlite($config->get('db_file')));
 $app->scan(__DIR__ . '/app', 'App');
 
 $app->middleware(SecurityHeaders::class);
