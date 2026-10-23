@@ -8,7 +8,7 @@ cd my-app
 composer serve
 ```
 
-`/ping` answers `pong`. Add your actions and commands to `app/`, and read the [Sapling guides](https://github.com/Phil-Venter/sapling-core/blob/main/README.md#guides) to go further.
+`/ping` answers `pong`, and `composer test` checks it. Add your actions and commands to `app/` and their tests to `tests/`. Read the [Sapling guides](https://github.com/Phil-Venter/sapling-core/blob/main/README.md#guides) to go further.
 
 ## Docker
 

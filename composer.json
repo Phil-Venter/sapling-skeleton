@@ -7,9 +7,17 @@
         "php": ">=8.4",
         "sapling/core": "dev-main"
     },
+    "require-dev": {
+        "pestphp/pest": "^5.3"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     },
     "scripts": {
@@ -19,6 +27,7 @@
         "serve": [
             "Composer\\Config::disableProcessTimeout",
             "php -S localhost:8080 -t public"
-        ]
+        ],
+        "test": "pest"
     }
 }
